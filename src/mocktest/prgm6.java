@@ -1,13 +1,15 @@
 package mocktest;
+
 class Customer{
-	int customerid;
-	String customerName;
-	String emailid;
-	Customer(int customerid,String customerName,String emailid){
+	public Customer(int customerid, String customerName, String emailid) {
 		this.customerid = customerid;
 		this.customerName = customerName;
 		this.emailid = emailid;
 	}
+	int customerid;
+	String customerName;
+	String emailid;
+	
 	public int getCustomerid() {
 		return customerid;
 	}
@@ -28,6 +30,7 @@ class Customer{
 	}
 
 }
+
 abstract class Account{
 	protected int accountNumber;
 	Customer customerObj;
@@ -76,7 +79,7 @@ class SavingsAccount extends Account{
 		this.minimumBalance = minimumBalance;
 	}
 	public boolean withdraw(double amount) {
-		if(balance-amount>this.minimumBalance) {
+		if((balance-amount)>this.minimumBalance) {
 			balance -= amount;
 			return true;
 		}			
@@ -90,6 +93,13 @@ public class prgm6 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Customer c = new Customer(123,"krishnapriya","kp@ust.com");
+		//Account acc = new Account(345,c,5000); cannot be instantiated
+		SavingsAccount saveacc = new SavingsAccount(345,c,5000,2000);
+		if(saveacc.withdraw(200))
+			System.out.println("Withdraw successful");
+		else
+			System.out.println("Insufficient balance");
 		
 		
 
